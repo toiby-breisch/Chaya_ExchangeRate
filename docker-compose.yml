@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./React
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "5173:5173"
+
+  backend:
+    build:
+      context: ./python
+      dockerfile: backend.Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - frontend
